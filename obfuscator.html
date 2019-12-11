@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Devxchange - LogMetrics Framework</title>
+    <title>Devxchange - Obfuscator Framework</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Devxchange - LogMetrics Framework">
+    <meta name="title" content="Devxchange - Obfuscator Framework">
     <meta name="description"
-          content="LogMetrics Framework provides simplified configuration to log payload for spring java projects & python projects">
+          content="Obfuscator Framework provides simplified configuration to obfuscate the sensitive field while logging the data.">
     <meta name="keywords"
-          content="Devxchange,devxchange,devxchange.io,LogMetrics, LogMetrics for Spring Projects, LogMetrics for Python Projects">
+          content="Devxchange,devxchange,devxchange.io,LogMetrics, Obfuscator for Java Projects">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
@@ -58,14 +58,14 @@
                 </div><!--//branding-->
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">LogMetrics Framework</li>
+                    <li class="breadcrumb-item active">Obfuscator Framework</li>
                 </ol>
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
-                    <h1 class="doc-title"><i class="icon_datareport_alt"></i> LogMetrics Framework</h1>
+                    <h1 class="doc-title"><i class="icon_datareport_alt"></i> Obfuscator Framework</h1>
                     <div class="meta"><i class="far fa-clock"></i> Last updated: Nov 23th, 2019</div>
                 </div><!--//doc-header-->
                 <div class="doc-body row">
@@ -74,149 +74,156 @@
                             <section id="download-section" class="doc-section">
                                 <h2 class="section-title">General</h2>
                                 <div class="section-block">
-                                    <p>LogMetrics Framework is used to collect and log the API metrics data and capture
-                                        the request and response payload.
+                                    <p>Obfuscator Framework - mask the sensitive fields using MD5 , SHA258 , Fixed
+                                        Mask and Matched Mask.
                                     </p>
                                 </div>
                             </section><!--//doc-section-->
                             <section id="code-section" class="doc-section">
                                 <h2 class="section-title">Java</h2>
                                 <div class="section-block">
-                                    <p>LogMetrics provides simplified configuration to log payload for
-                                        spring java projects</p>
+                                    <p>Obfuscator framework provides simplified configuration to obfuscate the
+                                        sensitive field while logging the data for java projects</p>
                                 </div><!--//section-block-->
                                 <div id="repo" class="section-block">
                                     <div class="code-block">
                                         <h6>Repository</h6>
-                                        <pre><code class="language-javascript"> maven { url "https://dl.bintray.com/m2/release"}</code></pre>
+                                        <pre><code class="language-javascript"> maven { url "https://dl.bintray.com/m2/release/"}</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 <div id="dependency" class="section-block">
                                     <div class="code-block">
                                         <h6>Dependency- Gradle</h6>
-                                        <pre><code class="language-javascript">compile ("io.devxchange:logmetrics:0.0.2")</code></pre>
+                                        <pre><code class="language-javascript">compile ("io.devxchange:obfuscator:0.0.1")</code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="properties" class="section-block">
+                                <div id="MD5" class="section-block">
                                     <div class="code-block">
-                                        <h6>properties</h6>
-                                        <pre><code class="language-css">logmetrics.logging.enabled=true
-logmetrics.logging.request.enabled=true
-logmetrics.logging.response.enabled=true
-logmetrics.logging.obfuscate.enabled=false
-logmetrics.logging.obfuscate.md5.fields= #comma seperated fields
-logmetrics.logging.obfuscate.sha256.fields= #comma seperated fields
-logmetrics.logging.obfuscate.fields= #comma seperated fields</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="appconfig" class="section-block">
-                                    <div class="code-block">
-                                        <h6>AppConfig</h6>
-                                        <pre><code class="language-javascript">@Configuration
-@EnableWebMvc
-public class AppConfig extends WebMvcConfigurerAdapter
+                                        <h6>MD5</h6>
+                                        <pre><code class="language-javascript">Usage
+============
+//Fields to obfuscated
+Set<String> items = new HashSet<>();
+items.add("name");
+items.add("salary");
+items.add("age");
+
+Map<String, Set<String>> obfuscatorMap= new HashMap<>();
+obfuscatorMap.put("md5", items);
+// obfuscate json object
+String response = Obfuscator.obfuscateJsonString(simpleJson,obfuscatorMap);
+// obfuscate XML object
+String response = Obfuscator.obfuscateXmlString(simpleXML,obfuscatorMap);
+
+Input
+=====
+{"id":1,"name":"karthik","age":29,"salary":115000}
+
+Output - MD5 Encrypted Response
+=================================
 {
-	@Autowired
-	@Qualifier("manager.logwriter")
-	private LogWriterManager logWriterManager;
+  "id": 1,
+  "name": "02adcec2263d2127269fcd769c33f029",
+  "age": "6ea9ab1baa0efb9e19094440c317e21b",
+  "salary": "560c237ab6f39688c4c45dc23e0d494e"
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="SHA256" class="section-block">
+                                    <div class="code-block">
+                                        <h6>SHA256</h6>
+                                        <pre><code class="language-javascript">Usage
+============
+//Fields to obfuscated
+Set<String> items = new HashSet<>();
+items.add("name");
+items.add("salary");
+items.add("age");
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry)
-	{
-		registry.addInterceptor(new RestTransactionInterceptor(logWriterManager));
-	}
-}                                        </code></pre>
-                                        <h6>SpringApplication</h6>
-                                        <pre><code class="language-javascript">import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+Map<String, Set<String>> obfuscatorMap= new HashMap<>();
+obfuscatorMap.put("sha256", items);
+// obfuscate json object
+String response = Obfuscator.obfuscateJsonString(simpleJson,obfuscatorMap);
+// obfuscate XML object
+String response = Obfuscator.obfuscateXmlString(simpleXML,obfuscatorMap);
 
-@SpringBootApplication
-@ComponentScan(basePackages = {"io.devxchange.logmetrics"})
-public class LoggingDemoApplication {
+Input
+=====
+{"id":1,"name":"karthik","age":29,"salary":115000}
 
-	public static void main(String[] args) {
-		SpringApplication.run(LoggingDemoApplication.class, args);
-	}
+Output - SHA256 Encrypted Response
+=================================
+{
+  "id": 1,
+  "name": "63b7cc6dd0c192e8f73170629701879816156027e44bbee145a7a8456a9a3517",
+  "age": "35135aaa6cc23891b40cb3f378c53a17a1127210ce60e125ccf03efcfdaec458",
+  "salary": "f190a3d0c04e5b2b3f4ee16d2df26597720b8d1c09179d2a0dad7e4605776875"
 }
 </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-                                <div id="schema" class="section-block">
+                                <div id="FixedMask" class="section-block">
                                     <div class="code-block">
-                                        <h6>Logmetrics Schema</h6>
-                                        <pre><code class="language-javascript">
+                                        <h6>FixedMask</h6>
+                                        <pre><code class="language-javascript">Usage
+============
+//Fields to obfuscated
+Set<String> items = new HashSet<>();
+items.add("name");
+items.add("salary");
+items.add("age");
+
+Map<String, Set<String>> obfuscatorMap= new HashMap<>();
+obfuscatorMap.put("fixedMask", items);
+// obfuscate json object
+String response = Obfuscator.obfuscateJsonString(simpleJson,obfuscatorMap);
+// obfuscate XML object
+String response = Obfuscator.obfuscateXmlString(simpleXML,obfuscatorMap);
+
+Input
+=====
+{"id":1,"name":"karthik","age":29,"salary":115000}
+
+Output - Fixed Mask Response
+=======================================
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "LogMetrics",
-  "properties": {
-    "Node": {
-      "type": "string",
-      "description": "Application Host IP Address"
-    },
-    "message_type": {
-      "type": "string",
-      "description": "Logmetrics message type",
-      "value": "LOGMETRICS_MESSAGE"
-    },
-    "Duration": {
-      "type": "integer",
-      "description": "Response time of the API"
-    },
-    "Host": {
-      "type": "string",
-      "description": "Application Host Name"
-    },
-    "Fault": {
-      "type": "boolean",
-      "description": "API Success or Failed status "
-    },
-    "Method": {
-      "type": "string",
-      "description": "API Method name"
-    },
-    "ResponseBody": {
-      "type": "string",
-      "description": "API Response Body"
-    },
-    "StartDateTime": {
-      "type": "string",
-      "description": "API Start Time"
-    },
-    "EndDateTime": {
-      "type": "string",
-      "description": "API End time"
-    },
-    "HttpMethod": {
-      "type": "string",
-      "description": "Http Method Type"
-    },
-    "RequestBody": {
-      "type": "string",
-      "description": "API Request Body"
-    }
-  }
+  "id": 1,
+  "name": "********",
+  "age": "********",
+  "salary": "********"
+}</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="MatchedMask" class="section-block">
+                                    <div class="code-block">
+                                        <h6>MatchedMask</h6>
+                                        <pre><code class="language-javascript">Usage
+============
+//Fields to obfuscated
+Set<String> items = new HashSet<>();
+items.add("name");
+items.add("salary");
+items.add("age");
+
+Map<String, Set<String>> obfuscatorMap= new HashMap<>();
+obfuscatorMap.put("matchedMask", items);
+// obfuscate json object
+String response = Obfuscator.obfuscateJsonString(simpleJson,obfuscatorMap);
+// obfuscate XML object
+String response = Obfuscator.obfuscateXmlString(simpleXML,obfuscatorMap);
+
+Input
+=====
+{"id":1,"name":"karthik","age":29,"salary":115000}
+
+Output - Matched Mask Response
+=================================
+{
+  "id": 1,
+  "name": "*******",
+  "age": "**",
+  "salary": "******"
 }</code></pre></div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="release" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Release</h6>
-                                        <h7>0.0.2</h7>
-                                        <pre><code class="language-handlebars">adding request and response payload obfuscation (masking sensitive information)
-</code></pre>
-                                        <h7>0.0.1</h7>
-                                        <pre><code class="language-handlebars">logging rest verb & payload to console.
-feature to enable/disable payload logging
-</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="demo" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Git Demo Example</h6>
-                                        <pre><code class="language-git">$ git clone https://github.com/devxchange-blog/logmetrics-demo.git </code></pre>
-                                        </br>
-                                        <img src="assets/gifs/logmetrics-demo.gif">
-                                    </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 
@@ -230,11 +237,10 @@ feature to enable/disable payload logging
                                     <nav class="doc-sub-menu nav flex-column">
                                         <a class="nav-link scrollto" href="#repo">Repository</a>
                                         <a class="nav-link scrollto" href="#dependency">Dependency</a>
-                                        <a class="nav-link scrollto" href="#properties">Properties</a>
-                                        <a class="nav-link scrollto" href="#appconfig">AppConfig</a>
-                                        <a class="nav-link scrollto" href="#schema">LogMetrics Schema</a>
-                                        <a class="nav-link scrollto" href="#release">Release</a>
-                                        <a class="nav-link scrollto" href="#demo">Demo</a>
+                                        <a class="nav-link scrollto" href="#MD5">MD5</a>
+                                        <a class="nav-link scrollto" href="#SHA256">SHA256</a>
+                                        <a class="nav-link scrollto" href="#FixedMask">FixedMask</a>
+                                        <a class="nav-link scrollto" href="#MatchedMask">MatchedMask</a>
                                     </nav><!--//nav-->
 	                            </nav><!--//doc-menu-->
                         </div>
