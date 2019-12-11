@@ -2,43 +2,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 	<url>
-		<loc>http://oneclicklabs.io/</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
+		<loc>http://devxchange.io/</loc>
+		<lastmod>2019-12-10T05:58:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>http://oneclicklabs.io/home.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
+		<loc>http://devxchange.io/logmetrics.html</loc>
+		<lastmod>2019-12-10T05:58:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>http://oneclicklabs.io/about.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
+		<loc>http://devxchange.io/gradle.html</loc>
+		<lastmod>2019-12-10T05:58:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>http://oneclicklabs.io/contact.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
+		<loc>http://devxchange.io/eclipse.html</loc>
+		<lastmod>2019-12-10T05:58:32+00:00</lastmod>
 	</url>
 	<url>
-		<loc>http://oneclicklabs.io/log4j.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://oneclicklabs.io/jrest.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://oneclicklabs.io/prest.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://oneclicklabs.io/orm.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://oneclicklabs.io/hbase.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>http://oneclicklabs.io/initializr.html</loc>
-		<lastmod>2016-12-07T05:58:32+00:00</lastmod>
+		<loc>http://devxchange.io/contact.html</loc>
+		<lastmod>2019-12-10T05:58:32+00:00</lastmod>
 	</url>
 </urlset>
