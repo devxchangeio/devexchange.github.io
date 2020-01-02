@@ -219,11 +219,114 @@ feature to enable/disable payload logging
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="python-section" class="doc-section">
+                            <section id="python-code-section" class="doc-section">
                                 <h2 class="section-title">Python</h2>
                                 <div class="section-block">
-                                    <p><strong>Development In Progress</strong> - LogMetrics provides simplified configuration to log
-                                        payload for python projects</p>
+                                    <p>LogMetrics provides simplified configuration to log payload for
+                                        python flask projects</p>
+                                </div><!--//section-block-->
+                                <div id="python-install" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Pypi Module</h6>
+                                        <pre><code class="language-javascript">pip install logmetrics-sdk</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="python-properties" class="section-block">
+                                    <div class="code-block">
+                                        <h6>properties</h6>
+                                        <pre><code class="language-css">enable_logmetrics= True
+enable_frontend_request= True
+enable_frontend_response= True
+enable_backend= True
+enable_backend_request= True
+enable_backend_response= True </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="python-usage" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <pre><code class="language-javascript">from logmetrics_sdk.logmetrics import LogMetrics
+
+@app.route('/todo/api/v1/tasks', methods=['GET'])
+@LogMetrics(enable_logmetrics=True,
+            enable_frontend_request=True,
+            enable_frontend_response=True,
+            enable_backend=True,
+            enable_backend_request=True,
+            enable_backend_response=True)
+def get_tasks():
+    return jsonify(tasks)</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="python-schema" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Logmetrics Schema</h6>
+                                        <pre><code class="language-javascript">{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "LogMetrics",
+  "properties": {
+    "Node": {
+      "type": "string",
+      "description": "Application Host IP Address"
+    },
+    "MessageType": {
+      "type": "string",
+      "description": "Logmetrics message type",
+      "value": "LOGMETRICS_MESSAGE"
+    },
+    "Duration": {
+      "type": "integer",
+      "description": "Response time of the API"
+    },
+    "Host": {
+      "type": "string",
+      "description": "Application Host Name"
+    },
+    "Fault": {
+      "type": "boolean",
+      "description": "API Success or Failed status "
+    },
+    "Method": {
+      "type": "string",
+      "description": "API Method name"
+    },
+    "ResponseBody": {
+      "type": "string",
+      "description": "API Response Body"
+    },
+    "StartDateTime": {
+      "type": "string",
+      "description": "API Start Time"
+    },
+    "EndDateTime": {
+      "type": "string",
+      "description": "API End time"
+    },
+    "HttpMethod": {
+      "type": "string",
+      "description": "Http Method Type"
+    },
+    "RequestBody": {
+      "type": "string",
+      "description": "API Request Body"
+    }
+  }
+}</code></pre></div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="python-release" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Release</h6>
+                                        <h7>1.0.3</h7>
+                                        <pre><code class="language-handlebars">logging rest verb & payload to console.
+feature to enable/disable payload logging
+</code></pre></div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="python-demo" class="section-block">
+                                    <div class="code-block">
+                                        <h6>Git Demo Example</h6>
+                                        <pre><code class="language-git">$ git clone https://github.com/devxchange-blog/logmetrics-python-demo.git </code></pre>
+                                        </br>
+                                    </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="go-section" class="doc-section">
@@ -249,7 +352,15 @@ feature to enable/disable payload logging
                                         <a class="nav-link scrollto" href="#release">Release</a>
                                         <a class="nav-link scrollto" href="#demo">Demo</a>
                                     </nav><!--//nav-->
-                                    <a class="nav-link scrollto" href="#python-section">Python</a>
+                                    <a class="nav-link scrollto" href="#python-code-section">Python</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#python-install">PyPi Module</a>
+                                        <a class="nav-link scrollto" href="#python-properties">Properties</a>
+                                        <a class="nav-link scrollto" href="#python-usage">Usage</a>
+                                        <a class="nav-link scrollto" href="#python-schema">Schema</a>
+                                        <a class="nav-link scrollto" href="#python-release">Release</a>
+                                        <a class="nav-link scrollto" href="#python-demo">Demo</a>
+                                    </nav><!--//nav-->
                                     <a class="nav-link scrollto" href="#go-section">Go</a>
 	                            </nav><!--//doc-menu-->
                         </div>
