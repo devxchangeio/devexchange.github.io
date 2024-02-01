@@ -1,6 +1,6 @@
-http://devxchange.io/
-http://devxchange.io/logmetrics.html
-http://devxchange.io/eclipse.html
-http://devxchange.io/gradle.html
-http://devxchange.io/contact.html
-http://devxchange.io/index.html
+http://devexchange.io/
+http://devexchange.io/logmetrics.html
+http://devexchange.io/eclipse.html
+http://devexchange.io/gradle.html
+http://devexchange.io/contact.html
+http://devexchange.io/index.html
